@@ -1,0 +1,9 @@
+main: com.gmail.markushygedombrowski.HLWarp
+version: "1.0"
+name: HLWarp
+commands:
+  hlwarp:
+    aliases: ["hlsetwarp", "hlwarpdelete", "hlwarplist"]
+    description: "HLWarp System"
+  hlwarpreload:
+    description: "reload"
