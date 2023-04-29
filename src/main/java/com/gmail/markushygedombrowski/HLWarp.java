@@ -10,9 +10,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class HLWarp extends JavaPlugin {
     private WarpManager warpManager;
     private ConfigManagerWarp configManagerWarp;
+    private static HLWarp instance;
 
     @Override
     public void onEnable() {
+        instance = this;
         saveDefaultConfig();
         loadConfigManager();
         System.out.println("HLWarp enabled");
@@ -47,4 +49,11 @@ public class HLWarp extends JavaPlugin {
         warpManager.load();
 
     }
+    public static HLWarp getInstace() {
+        return instance;
+    }
+    public WarpManager getWarpManager() {
+        return warpManager;
+    }
+
 }
