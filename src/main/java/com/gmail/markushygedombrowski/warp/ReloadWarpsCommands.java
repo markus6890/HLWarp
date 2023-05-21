@@ -18,6 +18,7 @@ public class ReloadWarpsCommands implements CommandExecutor {
             commandSender.sendMessage("§cDet har du ikke permission til!");
             return true;
         }
+        commandSender.sendMessage("§aWarps er blevet reloaded!");
         plugin.reload();
         return true;
     }
