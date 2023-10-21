@@ -13,7 +13,7 @@ public class ReloadWarpsCommands implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
+    public boolean onCommand(CommandSender commandSender, Command command, String alias, String[] strings) {
         if(!(commandSender.hasPermission("admin"))) {
             commandSender.sendMessage("§cDet har du ikke permission til!");
             return true;

@@ -59,9 +59,8 @@ public class WarpCommand implements CommandExecutor {
             sender.sendMessage("§cThat warp doesn't exist");
             return true;
         }
-
-
         player.teleport(info.getLocation());
+
         return true;
     }
 
@@ -75,7 +74,7 @@ public class WarpCommand implements CommandExecutor {
             return;
         }
         Location location = player.getLocation();
-        info = new WarpInfo(warpName, location);
+        info = new WarpInfo(warpName, location, location.getWorld().getName());
         warpManager.save(info);
         player.sendMessage("§a§lWarp created at §e" + location.toString());
     }
@@ -88,6 +87,7 @@ public class WarpCommand implements CommandExecutor {
             player.sendMessage("§cThat warp doesn't exist!");
             return;
         }
+
         warpManager.delete(warpName);
         player.sendMessage("§a§lWarp deleted");
     }

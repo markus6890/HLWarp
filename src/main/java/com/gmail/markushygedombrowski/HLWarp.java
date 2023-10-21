@@ -15,7 +15,6 @@ public class HLWarp extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
         saveDefaultConfig();
         loadConfigManager();
         initWarps();
@@ -25,6 +24,7 @@ public class HLWarp extends JavaPlugin {
         getCommand("hlwarpreload").setExecutor(reloadWarpsCommands);
         WarpCommand warpCommand = new WarpCommand(warpManager, this);
         getCommand("hlwarp").setExecutor(warpCommand);
+        instance = this;
     }
 
     @Override
@@ -46,7 +46,6 @@ public class HLWarp extends JavaPlugin {
     }
     public void reload() {
         reloadConfig();
-        FileConfiguration config = getConfig();
         loadConfigManager();
         configManagerWarp.reloadWarps();
         warpManager.load();

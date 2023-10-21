@@ -1,6 +1,7 @@
 main: com.gmail.markushygedombrowski.HLWarp
 version: "1.0"
 name: HLWarp
+depend: []
 commands:
   hlwarp:
     aliases: ["hlsetwarp", "hlwarpdelete", "hlwarplist"]
