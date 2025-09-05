@@ -14,25 +14,19 @@
     <properties>
         <java.version>21</java.version>
         <paper.version>1.21.8-R0.1-SNAPSHOT</paper.version>
-        <maven.compiler.release>${java.version}</maven.compiler.release>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <repositories>
         <!-- Paper API lives here -->
         <repository>
-            <id>papermc</id>
+            <id>papermc-repo</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
     </repositories>
 
-    <pluginRepositories>
-        <!-- REQUIRED for paper-nms-maven-plugin -->
-        <pluginRepository>
-            <id>bytecode.space</id>
-            <url>https://repo.bytecode.space/repository/maven-public/</url>
-        </pluginRepository>
-    </pluginRepositories>
 
     <dependencies>
         <!-- Paper API (provided by the server) -->
@@ -52,12 +46,6 @@
         </dependency>
 
         <!-- Only keep this if you really use Javassist; we’ll relocate it below -->
-        <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>3.29.2-GA</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -68,27 +56,11 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <release>${maven.compiler.release}</release>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
-            <!-- Unofficial NMS helper: init (run manually once) + remap (runs each build) -->
-            <plugin>
-                <groupId>ca.bkaw</groupId>
-                <artifactId>paper-nms-maven-plugin</artifactId>
-                <version>1.4.10</version>
-                <executions>
-                    <!-- If you need a Spigot-mapped output jar, keep this 'remap' execution.
-                         If you are Paper-only (1.20.5+), you can REMOVE this executions block
-                         and add the maven-jar-plugin manifest shown below instead. -->
-                    <execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>remap</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 
             <!-- Shade & relocate to avoid classpath collisions (e.g., Javassist) -->
             <plugin>
@@ -111,21 +83,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <!-- If you are Paper-only (no Spigot target), add this AND remove the 'remap' execution above:
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-jar-plugin</artifactId>
-              <version>3.4.1</version>
-              <configuration>
-                <archive>
-                  <manifestEntries>
-                    <paperweight-mappings-namespace>mojang</paperweight-mappings-namespace>
-                  </manifestEntries>
-                </archive>
-              </configuration>
-            </plugin>
-            -->
         </plugins>
     </build>
 </project>

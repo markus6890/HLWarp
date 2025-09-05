@@ -11,7 +11,6 @@ import java.io.IOException;
 
 public class ConfigManagerWarp {
     private HLWarp plugin = HLWarp.getPlugin(HLWarp.class);
-
     public FileConfiguration warpscfg;
     public File warpsFile;
 
