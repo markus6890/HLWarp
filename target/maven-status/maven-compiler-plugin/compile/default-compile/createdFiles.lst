@@ -4,3 +4,4 @@ com\gmail\markushygedombrowski\warp\ReloadWarpsCommands.class
 com\gmail\markushygedombrowski\HLWarp.class
 com\gmail\markushygedombrowski\utils\ConfigManagerWarp.class
 com\gmail\markushygedombrowski\warp\WarpCommand.class
+com\gmail\markushygedombrowski\warp\TestLoader.class
